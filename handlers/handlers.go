@@ -31,11 +31,11 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 // create new user
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var book User
-	_ = json.NewDecoder(r.Body).Decode(&book)
-	book.ID = strconv.Itoa(rand.Intn(100)) // Mock ID - not safe
-	Users = append(Users, book)
-	json.NewEncoder(w).Encode(book)
+	var user User
+	_ = json.NewDecoder(r.Body).Decode(&user)
+	user.ID = strconv.Itoa(rand.Intn(100)) // Mock ID - not safe
+	Users = append(Users, user)
+	json.NewEncoder(w).Encode(user)
 }
 
 // get single user
@@ -74,9 +74,9 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
-	var book User
-	_ = json.NewDecoder(r.Body).Decode(&book)
-	book.ID = params["id"]
-	Users = append(Users, book)
-	json.NewEncoder(w).Encode(book)
+	var user User
+	_ = json.NewDecoder(r.Body).Decode(&user)
+	user.ID = params["id"]
+	Users = append(Users, user)
+	json.NewEncoder(w).Encode(user)
 }

@@ -13,6 +13,7 @@ func main() {
 
 	r := mux.NewRouter()
 	p := ":8080"
+
 	r.HandleFunc("/users", han.GetUsers).Methods("GET")
 	r.HandleFunc("/createUser", han.CreateUser).Methods("POST")
 	r.HandleFunc("/user/{id}", han.GetUser).Methods("GET")
@@ -23,6 +24,7 @@ func main() {
 
 	han.Users = append(han.Users, han.User{ID: "12", Name: "Tushar Mah", Age: 30})
 	han.Users = append(han.Users, han.User{ID: "33", Name: "T Mah", Age: 55})
+	
 	log.Fatal(http.ListenAndServe(p, r))
 
 }
